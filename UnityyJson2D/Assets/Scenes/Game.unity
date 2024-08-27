@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -1.12, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4124,6 +4124,7 @@ GameObject:
   - component: {fileID: 1737009276}
   - component: {fileID: 1737009278}
   - component: {fileID: 1737009277}
+  - component: {fileID: 1737009279}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4191,8 +4192,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737009271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1144, y: -2.9001, z: 0}
-  m_LocalScale: {x: 6.6601, y: 6.6601, z: 6.6601}
+  m_LocalPosition: {x: -1.1144, y: -2.9001, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 6.6601}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4254,4 +4255,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1737009279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737009271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0c0a242b003174780b183a364b1fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velMovement: 5
+  fuerzaJumo: 7
+  movimientoH: 0
