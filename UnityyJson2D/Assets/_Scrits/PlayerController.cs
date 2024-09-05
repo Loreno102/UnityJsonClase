@@ -7,19 +7,21 @@ public class PlayerController : MonoBehaviour
     
     [ Header("Velocidad y salto") ] 
         public float velMovement = 5f; //Velocidad Movimiento
-        public float fuerzaJumo = 7f; //Fuerza de Salto
+        public float fuerzaJump = 7f; //Fuerza de Salto
 
     [ Header("RigidBody y Animator")]
         private Rigidbody2D rb; //RigiBodody de 
-        private Animator animator;
+        private Animator animator; //Animator Animaciones del juego
    
     [ Header("Movimiento Player")]
-        public float movimientoH;
+        public float movimientoH; //Fuerza de movimento en el eje X a traves del un Input
 
     [ Header("Posicion del player")]  
-    private Transform playerTransform;
+        private Transform playerTransform; //Posicion, escala
 
-
+    public bool enElSuelo = false; //Deteccion del suelo
+    
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,8 +55,28 @@ public class PlayerController : MonoBehaviour
         }
         else if (movimientoH < 0)
         {
-             transform.localScale = new Vector3(-6,6,6);
+             transform.localScale = new Vector3(-6,6,6); //movimiento hacia la derecha AQUI EL ESCALDO DEL PROFE FUE DE 1,1,1
         }
 
+        //Salto 
+        if(Input.GetButton("Jump") && enElSuelo)
+         {
+        animator.SetBool("Jump", true);
+        rb.AddForce(new Vector2(0f, fuerzaJump), ForceMode2D.Impulse);
+        enElSuelo = false;
+         }
+
     }
+    
+     public void OnCollisionEnter2d(Collision2D collision)
+
+     {
+            if (collision.gameObject.CompareTag("Suelo"))
+
+            {
+                enElSuelo = true;
+                Debug.Log("Estoy tocando el suelo");
+            }
+     }
 }
+
