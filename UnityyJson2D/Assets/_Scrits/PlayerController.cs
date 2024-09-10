@@ -17,9 +17,8 @@ public class PlayerController : MonoBehaviour
         public float movimientoH; //Fuerza de movimento en el eje X a traves del un Input
 
     [ Header("Posicion del player")]  
-        private Transform playerTransform; //Posicion, escala
-
-    public bool enElSuelo = false; //Deteccion del suelo
+        public Transform playerTransform; //Posicion, escala
+        public bool enElSuelo = false; //Deteccion del suelo
     
     
     void Start()
@@ -58,25 +57,52 @@ public class PlayerController : MonoBehaviour
              transform.localScale = new Vector3(-6,6,6); //movimiento hacia la derecha AQUI EL ESCALDO DEL PROFE FUE DE 1,1,1
         }
 
+
+
         //Salto 
         if(Input.GetButton("Jump") && enElSuelo)
          {
-        animator.SetBool("Jump", true);
-        rb.AddForce(new Vector2(0f, fuerzaJump), ForceMode2D.Impulse);
-        enElSuelo = false;
+            animator.SetBool("Jump", true);
+            Debug.Log("se ejecuta");
+            rb.AddForce(new Vector2(0f, fuerzaJump), ForceMode2D.Impulse);
+            enElSuelo = false;
+            Debug.Log("Space print");
          }
 
     }
     
-     public void OnCollisionEnter2d(Collision2D collision)
+     public void OnCollisionEnter2D(Collision2D collision)
 
      {
             if (collision.gameObject.CompareTag("Suelo"))
-
             {
                 enElSuelo = true;
                 Debug.Log("Estoy tocando el suelo");
             }
      }
+
+     private void OnTriggerEnter2D(Collider2D collision)
+
+     {
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log("Soy el Enemigo"); 
+        }
+     }
+
+     public void PlayerDeath()
+
+     {
+            //muerte personaje, animacion, respawn
+     }
+
+     public void RespawnCheckpoint()
+    {
+        if (Checkpoint.activeCheckpoint)
+
+        {
+
+        }
+    }
 }
 
