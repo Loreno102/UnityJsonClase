@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControl: MonoBehaviour
 {
     
     [ Header("Velocidad y salto") ] 
